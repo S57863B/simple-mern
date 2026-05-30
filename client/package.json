@@ -8,12 +8,15 @@
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "react-scripts start",
+  "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject"
+},
+"engines": {
+  "node": "16"
+},
   "eslintConfig": {
     "extends": "react-app"
   },
