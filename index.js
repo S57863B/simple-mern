@@ -35,9 +35,18 @@ app.post('/api/tasks/add', async (req, res) => {
   const task = await Task.create({ name: req.body.title, title: req.body.title });
   res.status(201).json(task);
 });
-app.delete('/api/tasks/:id', async (req, res) => {
+app.delete('/api/tasks/delete/:id', async (req, res) => {
   await Task.findByIdAndDelete(req.params.id);
   res.json({ message: 'Deleted' });
+});
+
+app.post('/api/tasks/update/:id', async (req, res) => {
+  const task = await Task.findByIdAndUpdate(
+    req.params.id,
+    { done: req.body.done },
+    { new: true }
+  );
+  res.json(task);
 });
 
 // Connect to MongoDB then start server
