@@ -12,7 +12,11 @@ app.use(cors());
 
 // Task schema
 const taskSchema = new mongoose.Schema(
-  { name: { type: String, required: true }, completed: { type: Boolean, default: false } },
+  { 
+    name: { type: String },
+    title: { type: String },
+    done: { type: Boolean, default: false }
+  },
   { timestamps: true }
 );
 const Task = mongoose.model('Task', taskSchema);
@@ -22,8 +26,13 @@ app.get('/api/tasks', async (req, res) => {
   const tasks = await Task.find().sort({ createdAt: -1 });
   res.json(tasks);
 });
+app.post('/api/tasks', async (req, res) => {
+  const task = await Task.create({ name: req.body.title, title: req.body.title });
+  res.status(201).json(task);
+});
+
 app.post('/api/tasks/add', async (req, res) => {
-  const task = await Task.create({ name: req.body.title });
+  const task = await Task.create({ name: req.body.title, title: req.body.title });
   res.status(201).json(task);
 });
 app.delete('/api/tasks/:id', async (req, res) => {
