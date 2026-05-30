@@ -6,6 +6,8 @@ const BASE = process.env.REACT_APP_API_URL
   ? `${process.env.REACT_APP_API_URL}/api`
   : '/api';
 
+  console.log('API BASE:', process.env.REACT_APP_API_URL);
+
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
