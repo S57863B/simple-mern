@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import TasksList from './components/TaskList';
 
-const BASE = process.env.REACT_APP_API_URL
-  ? `${process.env.REACT_APP_API_URL}/api`
-  : '/api';
+const BASE = 'https://taskmaster-backend-oqzw.onrender.com/api';
 
-  console.log('API BASE:', process.env.REACT_APP_API_URL);
+console.log('API BASE:', process.env.REACT_APP_API_URL);
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
